@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuadOwn | Dr. A.Sattar Amri</title>
+<meta name="description" content="QuadOwn: support + accountability = ownership. A framework for school leaders with a free sixteen-item checklist that places a teacher in one of four quadrants.">
+<meta property="og:title" content="QuadOwn: Support + Accountability = Ownership">
+<meta property="og:description" content="A framework for school leaders, with a free sixteen-item checklist.">
+<meta property="og:image" content="checklist-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Teacher's Lighthouse brand: navy ground for header/footer, ivory reading surface, gold as the single accent */
+  --navy: #0E1B3D;
+  --navy-soft: #1C2B55;
+  --gold: #F2C14E;
+  --gold-deep: #B8861B;
+  --ivory: #FBF8F1;
+  --paper: #FFFFFF;
+  --ink: #18213A;
+  --muted: #5A6278;
+  --line: #E4DED0;
+  --display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --body: "Libre Franklin", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--ivory); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+a { color: var(--navy); }
+a:focus-visible, button:focus-visible, input:focus-visible + label { outline: 3px solid var(--gold-deep); outline-offset: 2px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(28px, 4vw, 38px); color: var(--navy); }
+p { margin: 0; }
+.prose { max-width: 66ch; }
+
+/* header */
+header.hero { background: var(--navy); color: var(--ivory); padding: 28px 0 56px; }
+.brandline { font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.brandline span { color: #C9CEDB; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.hero h1 { font-size: clamp(36px, 6vw, 60px); margin-top: 36px; max-width: 18ch; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero .lead { margin-top: 20px; max-width: 60ch; font-size: 19px; color: #DDE1EA; }
+.letters { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; }
+.letters div { border: 1px solid #3A4A78; border-radius: 10px; padding: 10px 16px; min-width: 120px; }
+.letters b { font-family: var(--display); font-weight: 400; font-size: 30px; color: var(--gold); display: block; line-height: 1; }
+.letters small { font-size: 14px; color: #DDE1EA; }
+.btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 16px; text-decoration: none; border: 2px solid var(--gold); cursor: pointer; font-family: var(--body); }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-line { background: transparent; color: var(--gold); }
+.btn-navy { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
+.btn-plain { background: transparent; color: var(--navy); border-color: var(--navy); }
+
+section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+.sec-intro { margin-top: 12px; color: var(--muted); max-width: 66ch; }
+
+/* stages */
+.stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 32px; }
+.stage { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.stage.key { border: 2px solid var(--gold-deep); }
+.stage .num { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+.stage h3 { font-size: 26px; color: var(--navy); }
+.stage h3 b { color: var(--gold-deep); font-weight: 400; }
+.stage .q { font-weight: 600; }
+.stage ul { margin: 0; padding-left: 18px; font-size: 15px; color: var(--muted); }
+.stage ul li { margin: 3px 0; }
+.code { font-family: var(--body); font-weight: 700; font-size: 12px; background: var(--navy); color: var(--gold); border-radius: 4px; padding: 1px 6px; margin-right: 4px; letter-spacing: .03em; }
+.tag { align-self: flex-start; font-size: 12px; font-weight: 700; background: var(--gold); color: var(--navy); border-radius: 999px; padding: 2px 10px; }
+
+/* orders */
+.orders { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 32px; }
+.order { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+.order h3 { font-size: 24px; color: var(--navy); }
+.flow { display: flex; align-items: center; gap: 6px; margin: 16px 0; flex-wrap: wrap; }
+.flow span { font-family: var(--display); font-size: 26px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 10px; background: var(--navy); color: var(--gold); }
+.flow i { color: var(--muted); font-style: normal; }
+.layer { margin-top: 24px; background: var(--paper); border: 1px dashed var(--gold-deep); border-radius: 12px; padding: 20px 24px; }
+.layer h3 { font-size: 22px; color: var(--navy); }
+.layer table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 15px; }
+.layer th, .layer td { text-align: left; padding: 8px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+.layer th { width: 150px; color: var(--navy); }
+
+/* checklist */
+.tool { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; margin-top: 32px; align-items: start; }
+.groups { display: flex; flex-direction: column; gap: 16px; }
+fieldset { margin: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); padding: 18px 20px 12px; }
+legend { font-family: var(--display); font-size: 22px; color: var(--navy); padding: 0 6px; }
+.item { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; border-top: 1px solid #F0EBDF; }
+.item:first-of-type { border-top: 0; }
+.item input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--navy); flex: none; cursor: pointer; }
+.item label { cursor: pointer; font-size: 16px; }
+.item input:checked + label { color: var(--muted); }
+.summary { position: sticky; top: 16px; background: var(--navy); color: var(--ivory); border-radius: 12px; padding: 22px; }
+.summary h3 { font-size: 22px; color: var(--gold); }
+.total { font-variant-numeric: tabular-nums; font-size: 15px; margin-top: 6px; color: #C9CEDB; }
+.bars { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+.bar-row { display: grid; grid-template-columns: 28px 1fr 44px; gap: 10px; align-items: center; font-size: 14px; font-variant-numeric: tabular-nums; }
+.bar-row b { font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--gold); }
+.track { height: 10px; background: var(--navy-soft); border-radius: 999px; overflow: hidden; }
+.fill { height: 100%; background: var(--gold); border-radius: 999px; transition: width .25s; }
+.verdict { margin-top: 20px; padding-top: 16px; border-top: 1px solid #3A4A78; font-size: 15px; }
+.verdict strong { color: var(--gold); display: block; font-size: 17px; margin-bottom: 4px; }
+.tool-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.tool-btns .btn { font-size: 14px; padding: 8px 14px; }
+.note { font-size: 13px; color: #C9CEDB; margin-top: 10px; }
+
+/* family, about, contact */
+.family { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 28px; }
+.family a { display: block; text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px; color: var(--ink); }
+.family a b { display: block; font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--navy); }
+.family a small { color: var(--muted); font-size: 14px; }
+.family a.here { border: 2px solid var(--gold-deep); }
+.refs { margin-top: 24px; font-size: 15px; color: var(--muted); }
+.refs p { padding-left: 2em; text-indent: -2em; margin-top: 8px; }
+.about { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; align-items: center; }
+.about img { width: 200px; height: auto; border-radius: 12px; border: 3px solid var(--gold); display: block; }
+@media (max-width: 560px) { .about { grid-template-columns: 1fr; } .about img { width: 160px; } }
+.limit { margin-top: 20px; background: var(--paper); border-left: 4px solid var(--gold-deep); padding: 14px 18px; font-size: 15px; max-width: 66ch; }
+.contact { background: var(--navy); color: var(--ivory); border-bottom: 0; }
+.contact h2 { color: var(--gold); }
+.contact p { color: #DDE1EA; }
+.contact .addr { margin-top: 14px; font-size: 15px; color: #C9CEDB; }
+footer { background: var(--navy); color: #C9CEDB; font-size: 14px; padding: 24px 0 40px; border-top: 1px solid #3A4A78; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--gold); margin-left: 14px; }
+footer a:first-child { margin-left: 0; }
+
+@media (max-width: 820px) {
+  .tool { grid-template-columns: 1fr; }
+  .summary { position: static; }
+}
+@media (prefers-reduced-motion: reduce) { .fill { transition: none; } }
+@media print {
+  header.hero, .contact, footer, #matrix, #quadrants, #cycle, #meaning, #moving, #family, #related, #about, .tool-btns, .note, .btns { display: none !important; }
+  body { background: #fff; font-size: 12px; }
+  section { padding: 12px 0; border: 0; }
+  .tool { grid-template-columns: 1fr 220px; }
+  .summary { background: #fff; color: #000; border: 1px solid #999; }
+  .summary h3, .bar-row b, .verdict strong { color: #000; }
+  .fill { background: #555; } .track { background: #ddd; }
+  fieldset { break-inside: avoid; }
+}
+
+/* QuadOwn additions */
+.letters div b { font-size: 24px; }
+.mx { display: grid; grid-template-columns: 56px minmax(0,1fr); grid-template-rows: auto auto; gap: 10px; margin-top: 32px; max-width: 860px; }
+.mx-y { display: flex; flex-direction: column; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); }
+.mx-y b { writing-mode: vertical-rl; transform: rotate(180deg); color: var(--navy); font-size: 15px; }
+.mx-x { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); border-top: 2px solid var(--line); padding-top: 6px; }
+.mx-x b { color: var(--navy); font-size: 15px; }
+.mx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.q { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.q h3 { font-size: 26px; color: var(--navy); }
+.q .eq { font-weight: 700; color: var(--gold-deep); margin: 4px 0 8px; font-size: 15px; }
+.q p { font-size: 15px; color: var(--muted); }
+.q.own { background: var(--navy); border-color: var(--navy); }
+.q.own h3 { color: var(--gold); } .q.own .eq { color: var(--gold); } .q.own p { color: #DDE1EA; }
+.tbl { overflow-x: auto; margin-top: 28px; }
+.tbl table { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line); font-size: 15px; min-width: 640px; }
+.tbl th { background: var(--navy); color: var(--gold); text-align: left; padding: 10px 12px; font-weight: 600; }
+.tbl td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+.tbl td small { color: var(--muted); }
+.tbl tr.hl td { background: #FFF6DE; }
+.cyc { display: flex; align-items: center; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+.cyc .ar { font-style: normal; font-size: 28px; color: var(--gold-deep); }
+.cs { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; min-width: 170px; }
+.cs b { color: var(--navy); font-size: 16px; } .cs small { color: var(--muted); font-size: 14px; }
+.cs span { font-size: 12px; font-weight: 700; color: var(--gold-deep); }
+.cs.start { border: 2px solid var(--navy); }
+.cs.own { background: var(--navy); border-color: var(--navy); } .cs.own b { color: var(--gold); } .cs.own small, .cs.own span { color: #DDE1EA; }
+.loop { flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; border: 2px dashed var(--gold-deep); border-radius: 16px; padding: 14px; min-width: 280px; }
+.loop .back { grid-column: 1 / -1; margin: 0; font-weight: 600; color: var(--gold-deep); font-size: 15px; }
+.def { background: var(--paper); border-left: 4px solid var(--gold-deep); border-radius: 0 12px 12px 0; padding: 20px 24px; margin-top: 24px; max-width: 76ch; display: flex; flex-direction: column; gap: 10px; }
+.def h3 { font-size: 24px; color: var(--navy); }
+.sides { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 20px; }
+.side { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+.side h3 { font-size: 22px; color: var(--navy); }
+.side ul { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+.note-line { margin-top: 16px; font-size: 15px; color: var(--muted); max-width: 76ch; }
+.mini { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 14px; }
+.mini div { border: 1px solid #3A4A78; border-radius: 8px; padding: 10px 6px; text-align: center; font-size: 13px; color: #C9CEDB; }
+.mini div.on { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 700; }
+@media (max-width: 560px) { .mx-grid { grid-template-columns: 1fr; } .mx { grid-template-columns: 1fr; } .mx-y { display: none; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brandline">QuadOwn <span>· by Dr. A.Sattar Amri</span></div>
+    <h1>Support + Accountability = <em>Ownership</em>.</h1>
+    <p class="lead">Support without accountability builds dependence. Accountability without support builds compliance out of fear. Leaders who give both get teachers who seek help, act on it and own their own improvement.</p>
+    <div class="letters" aria-label="The four quadrants">
+      <div><b>S + A</b><small>Ownership</small></div>
+      <div><b>S − A</b><small>Dependence</small></div>
+      <div><b>A − S</b><small>Compliance</small></div>
+      <div><b>0 + 0</b><small>Drift</small></div>
+    </div>
+    <div class="btns">
+      <a class="btn btn-gold" href="QuadOwn-Framework-and-Checklist.pdf">Download the free framework &amp; checklist (PDF)</a>
+      <a class="btn btn-line" href="#checklist">Use the checklist online</a>
+      <a class="btn btn-line" href="https://www.youtube.com/@TeachersLighthouseTV" target="_blank" rel="noopener">Watch on YouTube</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="matrix">
+  <div class="wrap">
+    <h2>The QuadOwn matrix</h2>
+    <p class="sec-intro">Support runs left to right, accountability bottom to top. Only the top-right quadrant builds capacity that lasts after the leader steps back.</p>
+    <div class="mx">
+      <div class="mx-y"><span>high</span><b>Accountability</b><span>low</span></div>
+      <div class="mx-grid">
+        <div class="q"><h3>Compliance</h3><p class="eq">Accountability − Support</p><p>Performs for the senior, out of fear. Good lessons when observed, few requests for help.</p></div>
+        <div class="q own"><h3>Ownership</h3><p class="eq">Support + Accountability</p><p>Seeks support, acts on it, tracks own progress and sets the next target.</p></div>
+        <div class="q"><h3>Drift</h3><p class="eq">No support, no accountability</p><p>Left alone. Practice drifts with no direction and nothing changes from year to year.</p></div>
+        <div class="q"><h3>Dependence</h3><p class="eq">Support − Accountability</p><p>Waits for someone to fix it. The same feedback is given term after term.</p></div>
+      </div>
+      <div></div>
+      <div class="mx-x"><span>low</span><b>Support</b><span>high</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="quadrants">
+  <div class="wrap">
+    <h2>The four quadrants</h2>
+    <p class="sec-intro">Each quadrant is defined by what the leader gives, and each one teaches teachers a different habit. The same leader can be in Ownership with one department and Dependence with another, so apply QuadOwn teacher by teacher.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Quadrant</th><th>What the leader does</th><th>What the teacher does</th><th>Signs to look for</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><b>Ownership</b><br><small>high support, high accountability</small></td><td>Agrees clear expectations, gives targeted support, follows up on agreed actions and evidence</td><td>Asks for support, acts on it, tracks own progress, sets the next target</td><td>Brings evidence and questions to meetings; improvement continues between visits</td></tr>
+          <tr><td><b>Dependence</b><br><small>high support, low accountability</small></td><td>Steps in, re-teaches, fixes plans and lessons, rarely checks what changed</td><td>Waits for help; expects someone to put it right</td><td>Same feedback term after term; asks "what should I do?" before trying anything</td></tr>
+          <tr><td><b>Compliance</b><br><small>low support, high accountability</small></td><td>Inspects, judges and reports; offers little help to improve</td><td>Performs for the observation, plays safe, hides difficulties</td><td>Strong lessons when observed, weaker otherwise; anxiety about visits</td></tr>
+          <tr><td><b>Drift</b><br><small>low support, low accountability</small></td><td>Leaves the teacher alone</td><td>Teaches as they always have</td><td>Wide variation between rooms; no shared targets; no change year to year</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="cycle">
+  <div class="wrap">
+    <h2>The ownership cycle</h2>
+    <p class="sec-intro">Accountability gives the teacher a reason to seek support. Acting on it and seeing results shows the support is worth having. From then on the teacher seeks support without being pushed.</p>
+    <div class="cyc">
+      <div class="cs start"><b>Held to account</b><small>target and date agreed</small></div>
+      <i class="ar">→</i>
+      <div class="loop">
+        <div class="cs"><span>1</span><b>Seeks support</b><small>asks for help to meet it</small></div>
+        <div class="cs"><span>2</span><b>Acts on it</b><small>tries the strategy in class</small></div>
+        <div class="cs"><span>3</span><b>Sees results</b><small>evidence that it works</small></div>
+        <div class="cs own"><span>4</span><b>Owns development</b><small>sets the next target</small></div>
+        <p class="back">↺ then seeks more support, unprompted</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="meaning">
+  <div class="wrap">
+    <h2>What support and accountability mean</h2>
+    <div class="def">
+      <h3>Accountability is not punishment</h3>
+      <p>QuadOwn uses accountability in the sense Fullan, Rincón-Gallardo and Hargreaves (2015) call <em>internal accountability</em>: teachers taking personal, professional and collective responsibility for the continuous improvement and success of all students. External checks work only when this inner responsibility is there (Elmore, 2000). The Oz Principle (Connors, Smith &amp; Hickman, 1994) adds that accountability is a personal choice to show the ownership needed to get results.</p>
+      <p>Being held to account means the teacher agrees what they will improve, by when and how it will be shown, and the leader comes back to look at it with them. It never means blame, sanctions or catching people out.</p>
+    </div>
+    <div class="sides">
+      <div class="side">
+        <h3>Support builds capacity</h3>
+        <ul>
+          <li><span class="code">DS</span><b>Diagnosed support.</b> Matches a need shown by evidence, not a general workshop.</li>
+          <li><span class="code">CB</span><b>Capacity building.</b> The leader models, coaches and asks; the teacher does the fixing.</li>
+          <li><span class="code">OR</span><b>On request.</b> The teacher knows who to ask and gets a quick response.</li>
+        </ul>
+      </div>
+      <div class="side">
+        <h3>Accountability follows up</h3>
+        <ul>
+          <li><span class="code">CE</span><b>Clear expectations.</b> The teacher knows the standard, the target and how it will be checked.</li>
+          <li><span class="code">AC</span><b>Agreed commitments.</b> Every conversation ends with an action, a date and the evidence.</li>
+          <li><span class="code">FU</span><b>Follow-up on impact.</b> The leader returns on the date and checks the effect on students.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note-line">Where it tips over: when the leader fixes the plan instead of coaching (no CB), support builds dependence. When follow-up comes without matched support (no DS), accountability turns into inspection.</p>
+  </div>
+</section>
+
+<section id="moving">
+  <div class="wrap">
+    <h2>Moving a teacher to Ownership</h2>
+    <p class="sec-intro">Add what is missing; never take away what is already there.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>From</th><th>Add</th><th>First moves for the leader</th></tr></thead>
+        <tbody>
+          <tr><td><b>Dependence</b></td><td>Accountability</td><td>Stop fixing. Agree one commitment with a date and the evidence, then come back on that date. Answer "what should I do?" with "what have you tried, and what will you try next?"</td></tr>
+          <tr><td><b>Compliance</b></td><td>Support</td><td>Pair every follow-up with matched help: a model lesson, a coaching cycle, time with a colleague. Make it safe to say "this isn't working yet".</td></tr>
+          <tr><td><b>Drift</b></td><td>Both, in order</td><td>Set clear expectations, diagnose the need and offer support, then agree the first commitment. Passing through Compliance or Dependence on the way is progress.</td></tr>
+          <tr class="hl"><td><b>Ownership</b></td><td>Keep both, lighter</td><td>Hand the teacher more of the target-setting and follow-up. Use them to support colleagues. Check in less often, without stopping.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="wrap">
+    <h2>The QuadOwn checklist</h2>
+    <p class="sec-intro">Sixteen look-fors for one teacher or team. Tick what is in place; the panel places the teacher in a quadrant. Prefer paper? <a href="QuadOwn-Framework-and-Checklist.pdf">Download the two-page PDF</a>.</p>
+    <div class="tool">
+      <form class="groups" id="qo-form" onsubmit="return false">
+        <fieldset data-group="S">
+          <legend>Support</legend>
+          <div class="item"><input type="checkbox" id="s1"><label for="s1"><span class="code">DS</span>Support is based on evidence of this teacher's need (visit, work samples, data).</label></div>
+          <div class="item"><input type="checkbox" id="s2"><label for="s2"><span class="code">DS</span>The teacher agrees with the need the support addresses.</label></div>
+          <div class="item"><input type="checkbox" id="s3"><label for="s3"><span class="code">CB</span>The leader models or coaches; the teacher makes the changes.</label></div>
+          <div class="item"><input type="checkbox" id="s4"><label for="s4"><span class="code">CB</span>Plans and lessons are not fixed for the teacher.</label></div>
+          <div class="item"><input type="checkbox" id="s5"><label for="s5"><span class="code">OR</span>The teacher knows who to ask for help.</label></div>
+          <div class="item"><input type="checkbox" id="s6"><label for="s6"><span class="code">OR</span>Requests for help get a response within an agreed time.</label></div>
+        </fieldset>
+        <fieldset data-group="A">
+          <legend>Accountability</legend>
+          <div class="item"><input type="checkbox" id="a1"><label for="a1"><span class="code">CE</span>The teacher can state the standard and their own target.</label></div>
+          <div class="item"><input type="checkbox" id="a2"><label for="a2"><span class="code">CE</span>The teacher knows how and when progress will be checked.</label></div>
+          <div class="item"><input type="checkbox" id="a3"><label for="a3"><span class="code">AC</span>Every support conversation ends with an action, a date and the evidence.</label></div>
+          <div class="item"><input type="checkbox" id="a4"><label for="a4"><span class="code">AC</span>The commitment is written down and both sides hold a copy.</label></div>
+          <div class="item"><input type="checkbox" id="a5"><label for="a5"><span class="code">FU</span>The leader follows up on the agreed date.</label></div>
+          <div class="item"><input type="checkbox" id="a6"><label for="a6"><span class="code">FU</span>Follow-up checks the effect on students, not just whether the task was done.</label></div>
+        </fieldset>
+        <fieldset data-group="O">
+          <legend>Ownership (the result)</legend>
+          <div class="item"><input type="checkbox" id="o1"><label for="o1">The teacher asks for support before it is offered.</label></div>
+          <div class="item"><input type="checkbox" id="o2"><label for="o2">The teacher brings their own evidence to follow-up conversations.</label></div>
+          <div class="item"><input type="checkbox" id="o3"><label for="o3">The teacher sets their next target without being prompted.</label></div>
+          <div class="item"><input type="checkbox" id="o4"><label for="o4">Improvement continues between the leader's visits.</label></div>
+        </fieldset>
+      </form>
+
+      <aside class="summary" aria-live="polite">
+        <h3>Where this teacher sits</h3>
+        <div class="mini" aria-hidden="true">
+          <div id="m-C">Compliance</div><div id="m-O">Ownership</div>
+          <div id="m-Dr">Drift</div><div id="m-D">Dependence</div>
+        </div>
+        <div class="bars">
+          <div class="bar-row"><b>S</b><div class="track"><div class="fill" id="bar-S" style="width:0%"></div></div><span id="n-S">0/6</span></div>
+          <div class="bar-row"><b>A</b><div class="track"><div class="fill" id="bar-A" style="width:0%"></div></div><span id="n-A">0/6</span></div>
+          <div class="bar-row"><b>O</b><div class="track"><div class="fill" id="bar-O" style="width:0%"></div></div><span id="n-O">0/4</span></div>
+        </div>
+        <div class="verdict" id="verdict"></div>
+        <div class="tool-btns">
+          <button type="button" class="btn btn-gold" id="print-btn">Print or save as PDF</button>
+          <button type="button" class="btn btn-line" id="reset-btn">Clear all ticks</button>
+        </div>
+        <p class="note" id="print-note">4 or more of 6 counts as high. Your ticks stay in this browser only.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="family">
+  <div class="wrap">
+    <h2>Five frameworks, from lesson to leadership</h2>
+    <p class="sec-intro">QuadOwn and LeadCTRM work on the leader's side of school improvement; KUD, QuadFlow and QuadLens work at lesson level.</p>
+    <div class="family">
+      <a class="here" href="#"><b>QuadOwn</b><small>Support + accountability = ownership</small></a>
+      <a href="../leadctrm/"><b>LeadCTRM</b><small>Lead a team to a goal it owns</small></a>
+      <a href="../kud/"><b>KUD</b><small>Design the lesson from one objective</small></a>
+      <a href="../quadflow/"><b>QuadFlow</b><small>Plan and run the lesson</small></a>
+      <a href="../quadlens/"><b>QuadLens</b><small>Observe through four lenses</small></a>
+    </div>
+  </div>
+</section>
+
+<section id="related">
+  <div class="wrap">
+    <h2>Related work</h2>
+    <div class="prose" style="margin-top:16px; display:flex; flex-direction:column; gap:12px;">
+      <p>QuadOwn is my framework, drawn from my work leading teachers. Several published ideas sit close to it. Daloz (1986) crossed support with challenge in mentoring: support alone confirms, challenge alone causes retreat, and both together produce growth. The social discipline window (Wachtel &amp; McCold, 2001) crosses support with control and names the low-low corner neglect. Elmore's (2000) reciprocal accountability holds that every demand for better performance must come with the capacity to meet it. Fullan (2011) argues that accountability used as the main driver of reform tends to fail without capacity building.</p>
+      <p>What QuadOwn adds: outcomes named as teacher behaviour (dependence, compliance out of fear, ownership, drift), the ownership cycle, and a checklist for leaders.</p>
+    </div>
+    <p class="limit">Limitation: the quadrants and the cycle come from my experience and testing in schools and have not yet been tested in a published study. Evidence from your own school (who asks for support, follow-up records, changes in student results) is the best check.</p>
+    <div class="refs">
+      <p>Connors, R., Smith, T., &amp; Hickman, C. (1994). <em>The Oz principle: Getting results through individual and organizational accountability</em>. Prentice Hall.</p>
+      <p>Daloz, L. A. (1986). <em>Effective teaching and mentoring: Realizing the transformational power of adult learning experiences</em>. Jossey-Bass.</p>
+      <p>Elmore, R. F. (2000). <em>Building a new structure for school leadership</em>. Albert Shanker Institute.</p>
+      <p>Fullan, M. (2011). <em>Choosing the wrong drivers for whole system reform</em> (Seminar Series Paper No. 204). Centre for Strategic Education.</p>
+      <p>Fullan, M., Rincón-Gallardo, S., &amp; Hargreaves, A. (2015). Professional capital as accountability. <em>Education Policy Analysis Archives, 23</em>(15). https://doi.org/10.14507/epaa.v23.1998</p>
+      <p>Wachtel, T., &amp; McCold, P. (2001). Restorative justice in everyday life: Beyond the formal ritual. In H. Strang &amp; J. Braithwaite (Eds.), <em>Restorative justice and civil society</em> (pp. 114–129). Cambridge University Press.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+    <img src="photo.jpg" alt="Dr. A.Sattar Amri" width="461" height="600">
+    <div>
+    <h2>About Dr. A.Sattar Amri</h2>
+    <p class="prose" style="margin-top:16px;">General Director of Al Rawabi Schools, Bahrain, with 30 years in education as a teacher, head of department, school improvement partner and principal. Creator of QuadLens, QuadFlow, KUD, LeadCTRM and QuadOwn. Author of <em>Task Switching Dynamics</em>. Host of Teacher's Lighthouse on YouTube. <a href="../cv/">View CV →</a></p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Bring QuadOwn to your school</h2>
+    <p class="prose" style="margin-top:14px;">Leadership team workshops, coaching for principals and coordinators, and support to build follow-up systems that lead to ownership.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="https://wa.me/97339414182">Message on WhatsApp</a>
+      <a class="btn btn-line" href="mailto:a.sattar73@gmail.com">Email a.sattar73@gmail.com</a>
+    </div>
+    <p class="addr">WhatsApp +973 3941 4182 · a.sattar73@gmail.com</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© A. Sattar Mustafa Amri, PhD | All Rights Reserved</span>
+    <span><a href="https://www.youtube.com/@TeachersLighthouseTV" target="_blank" rel="noopener">Teacher's Lighthouse</a><a href="../quadlens/">QuadLens</a><a href="../quadflow/">QuadFlow</a><a href="../kud/">KUD</a><a href="../leadctrm/">LeadCTRM</a><a href="../cv/">CV</a><a href="../">Digital business card</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var KEY = 'quadown-checklist-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#qo-form input[type=checkbox]'));
+  var text = {
+    O: ['Ownership', 'Support and accountability are both in place. Keep both, lighten the touch, and hand the teacher more of the target-setting.'],
+    D: ['Dependence', 'Support is strong but accountability is weak. Add accountability: agree one commitment with a date and evidence, and stop fixing.'],
+    C: ['Compliance', 'Accountability is strong but support is weak. Add support: pair every follow-up with matched help, and make it safe to say "not yet".'],
+    Dr: ['Drift', 'Little support and little accountability. Set clear expectations, diagnose the need, offer support, then agree the first commitment.']
+  };
+  function load() { try { var s = JSON.parse(localStorage.getItem(KEY) || '{}'); boxes.forEach(function (b) { b.checked = !!s[b.id]; }); } catch (e) {} }
+  function save() { try { var s = {}; boxes.forEach(function (b) { if (b.checked) s[b.id] = 1; }); localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  function count(g) { return document.querySelectorAll('#qo-form fieldset[data-group="' + g + '"] input:checked').length; }
+  function update() {
+    var s = count('S'), a = count('A'), o = count('O');
+    [['S', s, 6], ['A', a, 6], ['O', o, 4]].forEach(function (r) {
+      document.getElementById('bar-' + r[0]).style.width = (r[1] / r[2] * 100) + '%';
+      document.getElementById('n-' + r[0]).textContent = r[1] + '/' + r[2];
+    });
+    var q = s >= 4 ? (a >= 4 ? 'O' : 'D') : (a >= 4 ? 'C' : 'Dr');
+    var none = s + a + o === 0;
+    ['O', 'D', 'C', 'Dr'].forEach(function (k) { document.getElementById('m-' + k).className = (k === q && !none) ? 'on' : ''; });
+    var v = document.getElementById('verdict');
+    if (s + a + o === 0) { v.innerHTML = '<strong>Start ticking</strong>Tick what is already in place for one teacher or team.'; return; }
+    var extra = '';
+    if (q === 'O' && o < 3) extra = ' The ownership signs are not showing yet, so give it time and keep following up.';
+    if (q !== 'O' && o >= 3) extra = ' The ownership signs are there, so check whether support or accountability is happening in ways this checklist missed.';
+    v.innerHTML = '<strong>' + text[q][0] + '</strong>' + text[q][1] + extra;
+  }
+  boxes.forEach(function (b) { b.addEventListener('change', function () { save(); update(); }); });
+  document.getElementById('reset-btn').addEventListener('click', function () { boxes.forEach(function (b) { b.checked = false; }); save(); update(); });
+  document.getElementById('print-btn').addEventListener('click', function () {
+    try { window.print(); } catch (e) {}
+    document.getElementById('print-note').textContent = 'If no print window opened, open the page on its own in your browser and press Ctrl+P (Cmd+P on Mac).';
+  });
+  load(); update();
+})();
+</script>
+</body>
+</html>
